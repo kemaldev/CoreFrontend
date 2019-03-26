@@ -1,0 +1,13 @@
+.buttons {
+    margin-top: 5px;
+    margin-right: 5px;
+    float: right;
+}
+
+.error-message {
+    color: red;
+}
+
+.hunted-form {
+    margin-top: 5px;
+}

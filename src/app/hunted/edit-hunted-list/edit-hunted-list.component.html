@@ -1,0 +1,130 @@
+<div class="row">
+    <div class="col">
+      <button (click)="deleteButtonClicked()" class="btn btn-danger buttons">
+        Delete List
+      </button>
+      <button
+      (click)="editButtonClicked()"
+      class="btn btn-primary buttons">Edit List</button>
+      <button
+      (click)="addCharacterClicked()"
+      class="btn btn-success buttons">
+        Add character
+      </button>
+      <button (click)="addGuildClicked()" class="btn btn-success buttons">
+        Add guild
+      </button>
+    </div>
+  </div>
+
+<div class="row hunted-form">
+    <div *ngIf="showGuildAdd">
+      <div class="col">
+        <form #f="ngForm" (ngSubmit)="onGuildAdd(f)">
+          <div class="form-group">
+            <label for="guildAdd">Guild Name</label>
+            <input
+              name="guildAdd"
+              ngModel
+              required
+              #guildName="ngModel"
+              type="text"
+              class="form-control"
+              id="guildAdd"
+            />
+            <label *ngIf="errorMessage" for="errorMessage" class="error-message"
+              >Please enter a guild name.</label
+            >
+          </div>
+          <button class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  
+    <div *ngIf="showCharacterAdd">
+      <div class="col">
+        <form #f="ngForm" (ngSubmit)="onCharacterAdd(f)">
+          <div class="form-group">
+            <label for="characterAdd">Character Name</label>
+            <input
+              name="characterAdd"
+              ngModel
+              required
+              #characterName="ngModel"
+              type="text"
+              class="form-control"
+              id="characterAdd"
+            />
+            <label *ngIf="errorMessage" for="errorMessage" class="error-message"
+              >Please enter a character name.</label
+            >
+          </div>
+          <button class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  
+    <div *ngIf="showEditList">
+      <div class="col">
+        <form #f="ngForm" (ngSubmit)="onListEdit(f)">
+          <div class="form-group">
+            <label for="listName">List name</label>
+            <input
+              name="listName"
+              ngModel
+              required
+              #listName="ngModel"
+              type="text"
+              class="form-control"
+              id="listName"
+            />
+            <label *ngIf="errorMessage" for="errorMessage" class="error-message"
+              >Please enter a list name.</label
+            >
+          </div>
+          <button class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  
+      <div class="col">
+        <div #modal class="modal" id="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Delete {{ huntedList.name }}?</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>
+                  Do you really want to delete the list {{ huntedList.name }} ?
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  (click)="deleteList(huntedList)"
+                  type="button"
+                  class="btn btn-danger"
+                >
+                  Delete
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>

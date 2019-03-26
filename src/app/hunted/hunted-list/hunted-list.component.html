@@ -1,0 +1,8 @@
+<div class="card">
+  <div class="list-group">
+    <h5 class="card-header">{{ huntedList.name }}</h5>
+    <app-hunted [characterList]="characterList"></app-hunted>
+  </div>
+</div>
+
+<app-edit-hunted-list [huntedList]="huntedList"></app-edit-hunted-list>

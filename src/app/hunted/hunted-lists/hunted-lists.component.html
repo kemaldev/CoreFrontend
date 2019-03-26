@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="list-group">
+    <h5 class="card-header">Lists</h5>
+    <ng-container *ngFor="let huntedList of huntedLists">
+        <a
+        [ngClass]="(huntedList.id === activeList) ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action'"
+        (click)="huntedListClicked(huntedList)"
+        href="#"
+        class="list-group-item list-group-item-action">
+        {{ huntedList.name }}
+      </a>
+    </ng-container>
+  </div>
+</div>
+<div class="row">
+  <div *ngIf="showTextBox">
+    <div class="col">
+      <label for="huntedListName">Name</label>
+      <input
+      [(ngModel)]="huntedListName"
+      type="text" 
+      class="form-control" 
+      id="huntedListName" />
+      <label
+      *ngIf="errorMessage" 
+      for="errorMessage"
+      class="error-message">Please enter a listname.</label>
+    </div>
+  </div>
+  <div class="col">
+    <button (click)="addListClicked()" class="btn btn-primary btn-add">
+      Add List
+    </button>
+  </div>
+</div>

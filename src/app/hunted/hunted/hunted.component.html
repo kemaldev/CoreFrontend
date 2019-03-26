@@ -1,0 +1,14 @@
+<ng-container *ngFor="let tibiaChar of characterList">
+  <a
+    [ngClass]="
+      tibiaChar.id === activeChar
+        ? 'list-group-item list-group-item-action active py-2'
+        : 'list-group-item list-group-item-action py-2'
+    "
+    (click)="tibiaCharClicked(tibiaChar)"
+    href="#"
+    class="list-group-item list-group-item-action"
+  >
+    {{ tibiaChar.level }} - {{ tibiaChar.name }}
+  </a>
+</ng-container>
