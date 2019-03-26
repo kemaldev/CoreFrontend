@@ -11,13 +11,14 @@ import { Subscription, Subject, Observable } from 'rxjs';
 export class HuntedListsComponent implements OnInit, OnDestroy {
   huntedLists: HuntedList[] = [];
   huntedListName: string;
-  activeList: number;
+  activeList: HuntedList;
   activeListSubscription: Subscription;
   showTextBox = false;
   errorMessage = false;
 
   constructor(private huntedListService: HuntedListService) {
     this.activeList = this.huntedListService.activeList;
+    this.huntedListService.setOnlineCountToHuntedList();
     this.activeListSubscription = this.huntedListService.activeListChange.subscribe((activeList) => {
       this.huntedLists = this.huntedListService.huntedLists;
       this.activeList = activeList;
@@ -25,7 +26,7 @@ export class HuntedListsComponent implements OnInit, OnDestroy {
   }
 
   huntedListClicked(huntedList: HuntedList) {
-    this.huntedListService.activeList = huntedList.id;
+    this.huntedListService.activeList = huntedList;
   }
 
   addListClicked() {

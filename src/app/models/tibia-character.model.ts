@@ -7,6 +7,7 @@ export class TibiaCharacter {
    guild: string;
    residence: string;
    latestDeathBy: string;
+   isOnline: boolean;
    lastLogin: Date;
    latestDeath: Date;
    huntingPlaces: HuntingPlace[];
@@ -19,6 +20,7 @@ export class TibiaCharacter {
     guild: string,
     residence: string,
     latestDeathBy: string,
+    isOnline: boolean,
     lastLogin: Date,
     latestDeath: Date,
     huntingPlaces: HuntingPlace[]
@@ -30,6 +32,7 @@ export class TibiaCharacter {
     this.guild = guild;
     this.residence = residence;
     this.latestDeathBy = latestDeathBy;
+    this.isOnline = isOnline;
     this.lastLogin = lastLogin;
     this.latestDeath = latestDeath;
     this.huntingPlaces = huntingPlaces;

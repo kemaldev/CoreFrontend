@@ -22,7 +22,7 @@ export class HuntedListComponent implements OnInit, OnDestroy {
   }
 
   updateCharacterList() {
-    this.huntedList = this.huntedListService.getActiveList();
+    this.huntedList = this.huntedListService.activeList;
     this.characterList = this.huntedList.tibiaCharacters;
   }
 

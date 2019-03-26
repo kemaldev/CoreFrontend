@@ -3,11 +3,11 @@
     <h5 class="card-header">Lists</h5>
     <ng-container *ngFor="let huntedList of huntedLists">
         <a
-        [ngClass]="(huntedList.id === activeList) ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action'"
+        [ngClass]="(huntedList.id === activeList.id) ? 'list-group-item list-group-item-action active' : 'list-group-item list-group-item-action'"
         (click)="huntedListClicked(huntedList)"
         href="#"
         class="list-group-item list-group-item-action">
-        {{ huntedList.name }}
+        {{ huntedList.name }} ({{huntedList.amountOnline}})
       </a>
     </ng-container>
   </div>

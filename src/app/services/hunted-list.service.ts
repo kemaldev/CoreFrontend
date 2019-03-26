@@ -8,12 +8,11 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class HuntedListService {
-  activeListChange: Subject<number> = new Subject<number>();
-  private _activeList: number;
+  activeListChange: Subject<HuntedList> = new Subject<HuntedList>();
+  private _activeList: HuntedList;
   private _huntedLists: HuntedList[];
 
   constructor() {
-    this._activeList = 0;
     this._huntedLists = [
       new HuntedList(0, 'Hunted', [
         new TibiaCharacter(
@@ -24,6 +23,7 @@ export class HuntedListService {
           'Core',
           'Roshamuul',
           'Relentless Sierska, Bugzy Malone, Yung Raffu',
+          true,
           new Date(),
           new Date(),
           [new HuntingPlace(0, 'Library')]
@@ -36,6 +36,7 @@ export class HuntedListService {
           'Sophisticated Society',
           'Roshamuul',
           'Relentless Sierska, Bugzy Malone, Yung Raffu',
+          true,
           new Date(),
           new Date(),
           [new HuntingPlace(0, 'Lolbro')]
@@ -50,12 +51,15 @@ export class HuntedListService {
           'Core',
           'Roshamuul',
           'Relentless Rektrim, Bonezaw, Alex Flow',
+          false,
           new Date(),
           new Date(),
           [new HuntingPlace(1, 'Plague Seal')]
         )
       ])
     ];
+
+    this._activeList = this._huntedLists[0];
   }
 
   get huntedLists(): HuntedList[] {
@@ -71,22 +75,26 @@ export class HuntedListService {
     );
   }
 
+  setOnlineCountToHuntedList() {
+    for(let huntedList of this._huntedLists) {
+      huntedList.amountOnline =  this.getOnlineCount(huntedList.tibiaCharacters);
+    }
+  }
+
+  private getOnlineCount(characterList: TibiaCharacter[]): number {
+    return characterList.reduce((charOnline, tibiaChar) => (tibiaChar.isOnline ? charOnline + 1 : charOnline), 0);
+  }
+
   removeList(id: number) {
-    console.log('Before ' + this._huntedLists);
     this._huntedLists.splice(id, 1);
-    console.log('After ' + this._huntedLists);
-    this.activeList = 0;
+    this.activeList = this._huntedLists[0];
   }
 
-  getActiveList() {
-    return this.huntedLists.find((huntedList) => huntedList.id === this._activeList);
-  }
-
-  get activeList(): number {
+  get activeList(): HuntedList {
     return this._activeList;
   }
 
-  set activeList(activeList: number) {
+  set activeList(activeList: HuntedList) {
     this._activeList = activeList;
     this.activeListChange.next(this._activeList);
   }

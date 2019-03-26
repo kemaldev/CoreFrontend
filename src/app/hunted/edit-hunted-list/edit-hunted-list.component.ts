@@ -89,8 +89,7 @@ export class EditHuntedListComponent implements OnInit {
   onListEdit(form: NgForm) {
     if(form.valid) {
       const listName = form.value.listName;
-      const index = this.huntedListService.activeList;
-      this.huntedListService.huntedLists[index].name = listName;
+      this.huntedListService.activeList = listName;
     }
   }
 

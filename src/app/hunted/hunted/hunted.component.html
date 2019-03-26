@@ -1,7 +1,7 @@
 <ng-container *ngFor="let tibiaChar of characterList">
   <a
     [ngClass]="
-      tibiaChar.id === activeChar
+      tibiaChar.id === activeChar.id
         ? 'list-group-item list-group-item-action active py-2'
         : 'list-group-item list-group-item-action py-2'
     "

@@ -5,47 +5,49 @@
               <div class="card-body">
                   <div class="row">
                       <div class="col">
-                        <p class="lead float-left"><b>Name:</b> Relentless Rektrim</p>
+                        <p class="lead float-left"><b>Name:</b> {{ tibiaCharacter.name }}</p>
                       </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                          <p class="lead float-left"><b>Vocation:</b> Elder Druid</p>
+                          <p class="lead float-left"><b>Vocation:</b> {{ tibiaCharacter.vocation }}</p>
                         </div>
                       </div>
                       <div class="row">
                           <div class="col">
-                            <p class="lead float-left"><b>Level:</b> 319</p>
+                            <p class="lead float-left"><b>Level:</b> {{ tibiaCharacter.level }}</p>
                           </div>
                       </div>
                       <div class="row">
                           <div class="col">
-                            <p class="lead float-left"><b>Guild:</b> One of the Core</p>
+                            <p class="lead float-left"><b>Guild:</b> {{ tibiaCharacter.guild }}</p>
                           </div>
                       </div>
                       <div class="row">
                           <div class="col">
-                            <p class="lead float-left"><b>Residence:</b> Roshamuul</p>
+                            <p class="lead float-left"><b>Residence:</b> {{ tibiaCharacter.residence }}</p>
                           </div>
                       </div>
                       <div class="row">
                           <div class="col">
-                            <p class="lead float-left"><b>Latest Death By:</b> Relentless Sierska, Bugzy Malone, Yung Raffu</p>
+                            <p class="lead float-left"><b>Latest Death By:</b> {{ tibiaCharacter.latestDeathBy }}</p>
                           </div>
                       </div>
                       <div class="row">
                           <div class="col">
-                            <p class="lead float-left"><b>Last Login:</b> 2019-03-22T22h18m22s</p>
+                            <p class="lead float-left"><b>Last Login:</b> {{ tibiaCharacter.lastLogin }}</p>
                           </div>
                       </div>
                       <div class="row">
                           <div class="col">
-                            <p class="lead float-left"><b>Latest Death:</b> 2010-12-22T12h18m12s</p>
+                            <p class="lead float-left"><b>Latest Death:</b> {{ tibiaCharacter.latestDeath }}</p>
                           </div>
                       </div>
                       <div class="row">
                           <div class="col">
-                            <p class="lead float-left"><b>Favorite Hunting Places: </b> Library, Plague Seal, Asuras</p>
+                            <p
+                            *ngFor="let huntingPlace of tibiaCharacter.huntingPlaces" 
+                            class="lead float-left"><b>Favorite Hunting Places: </b> {{ huntingPlace.name }}</p>
                           </div>
                       </div>
               </div> 
