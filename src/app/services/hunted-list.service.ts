@@ -40,11 +40,24 @@ export class HuntedListService {
           new Date(),
           new Date(),
           [new HuntingPlace(0, 'Lolbro')]
+        ),
+        new TibiaCharacter(
+          2,
+          'Yung Raffu',
+          'Master Sorcerer',
+          500,
+          'Sophisticated Society',
+          'Roshamuul',
+          'Relentless Rektrim, Bonezaw, Bugzy Malone',
+          false,
+          new Date(),
+          new Date(),
+          [new HuntingPlace(0, 'Yep')]
         )
       ]),
       new HuntedList(1, 'Friends', [
         new TibiaCharacter(
-          2,
+          3,
           'Relentless Sierska',
           'Master Sorcerer',
           340,
@@ -73,6 +86,14 @@ export class HuntedListService {
         listName
       )
     );
+  }
+
+  getCharacterWithId(id: number): TibiaCharacter {
+    return this._activeList.tibiaCharacters.find(character => character.id === id);
+  }
+
+  getFirstCharacter(): TibiaCharacter {
+    return this._activeList.tibiaCharacters[0];
   }
 
   setOnlineCountToHuntedList() {

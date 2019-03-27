@@ -19,20 +19,27 @@ export class HuntedComponent implements OnInit, OnDestroy {
     private tibiaCharacterService: TibiaCharacterService
   ) {
     // If user switches between hunting lists we want it to automatically select the first character in the HuntedList.
-    this.updateActiveChar(0);
+    this.updateActiveCharToFirst();
 
     this.activeListSubscription = this.huntedListService.activeListChange.subscribe(
       () => {
-        this.updateActiveChar(0);
+        this.updateActiveCharToFirst();
       }
     );
   }
 
-  updateActiveChar(index: number) {
+  updateActiveCharToFirst() {
+    const tibiaChar: TibiaCharacter = this.huntedListService.getFirstCharacter();
+    this.tibiaCharacterService.charSelected = tibiaChar;
+    this.activeChar = tibiaChar;
+  }
+
+  updateActiveChar(id: number) {
     const activeHuntedList = this.huntedListService.activeList;
     if (activeHuntedList.tibiaCharacters) {
-      this.tibiaCharacterService.charSelected = activeHuntedList.tibiaCharacters[index];
-      this.activeChar = activeHuntedList.tibiaCharacters[index];
+      const character: TibiaCharacter = this.huntedListService.getCharacterWithId(id);
+      this.tibiaCharacterService.charSelected = character;
+      this.activeChar = character;
     }
   }
 

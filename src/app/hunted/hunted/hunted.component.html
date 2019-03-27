@@ -9,6 +9,6 @@
     href="#"
     class="list-group-item list-group-item-action"
   >
-    {{ tibiaChar.level }} - {{ tibiaChar.name }}
+    {{ tibiaChar.level }} - {{ tibiaChar.name }} <fa [ngClass]="(tibiaChar.isOnline) ? 'online' : 'offline'" name="circle"></fa>
   </a>
 </ng-container>
