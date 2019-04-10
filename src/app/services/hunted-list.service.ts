@@ -89,21 +89,50 @@ export class HuntedListService {
   }
 
   getCharacterWithId(id: number): TibiaCharacter {
-    return this._activeList.tibiaCharacters.find(character => character.id === id);
+    return this._activeList.tibiaCharacters.find(
+      character => character.id === id
+    );
   }
 
   getFirstCharacter(): TibiaCharacter {
     return this._activeList.tibiaCharacters[0];
   }
 
+  addCharacterToList(charName: string) {
+    if (!this.activeList.tibiaCharacters) {
+      this.activeList.tibiaCharacters = [];
+    }
+
+    // Will change this later, will be db connected so won't have to think about id's, just hardcoding it for now.
+    this.activeList.tibiaCharacters.push(
+      new TibiaCharacter(
+        10,
+        charName,
+        'Royal Paladin',
+        300,
+        'Test',
+        'Roshamuul',
+        'Asd Asdsson, Ehhh, Gggggg',
+        false,
+        new Date(),
+        new Date(),
+        [new HuntingPlace(0, 'Nope')]
+      )
+    );
+  }
+
   setOnlineCountToHuntedList() {
-    for(let huntedList of this._huntedLists) {
-      huntedList.amountOnline =  this.getOnlineCount(huntedList.tibiaCharacters);
+    for (let huntedList of this._huntedLists) {
+      huntedList.amountOnline = this.getOnlineCount(huntedList.tibiaCharacters);
     }
   }
 
   private getOnlineCount(characterList: TibiaCharacter[]): number {
-    return characterList.reduce((charOnline, tibiaChar) => (tibiaChar.isOnline ? charOnline + 1 : charOnline), 0);
+    return characterList.reduce(
+      (charOnline, tibiaChar) =>
+        tibiaChar.isOnline ? charOnline + 1 : charOnline,
+      0
+    );
   }
 
   removeList(id: number) {

@@ -29,9 +29,11 @@ export class HuntedComponent implements OnInit, OnDestroy {
   }
 
   updateActiveCharToFirst() {
-    const tibiaChar: TibiaCharacter = this.huntedListService.getFirstCharacter();
-    this.tibiaCharacterService.charSelected = tibiaChar;
-    this.activeChar = tibiaChar;
+    if (this.huntedListService.activeList.tibiaCharacters) {
+      const tibiaChar: TibiaCharacter = this.huntedListService.getFirstCharacter();
+      this.tibiaCharacterService.charSelected = tibiaChar;
+      this.activeChar = tibiaChar;
+    }
   }
 
   updateActiveChar(id: number) {

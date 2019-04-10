@@ -1,31 +1,26 @@
+import { AboutModule } from './about/about.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { HuntedListsComponent } from './hunted/hunted-lists/hunted-lists.component';
-import { HuntedListComponent } from './hunted/hunted-list/hunted-list.component';
-import { HuntedComponent } from './hunted/hunted/hunted.component';
-import { EditHuntedListComponent } from './hunted/edit-hunted-list/edit-hunted-list.component';
-import { CharacterComponent } from './character/character/character.component';
-import { EditCharacterComponent } from './character/edit-character/edit-character.component';
+import { HomeComponent } from './home/home/home.component';
+import { HuntedModule } from './hunted/hunted.module';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HuntedListsComponent,
-    HuntedListComponent,
-    HuntedComponent,
-    EditHuntedListComponent,
-    CharacterComponent,
-    EditCharacterComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AngularFontAwesomeModule
+    HuntedModule,
+    AboutModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

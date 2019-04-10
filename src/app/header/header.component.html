@@ -1,14 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">CoreBot</a>
+    <a class="navbar-brand" [routerLink]="['/']">CoreBot</a>
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">HuntedLists</a>
+          <a class="nav-link" [routerLink]="['/list']">Lists</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/about']">About</a>
+          </li>
       </ul>
     </div>
   </nav>

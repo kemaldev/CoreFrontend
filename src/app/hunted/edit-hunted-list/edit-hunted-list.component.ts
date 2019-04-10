@@ -79,7 +79,7 @@ export class EditHuntedListComponent implements OnInit {
   onCharacterAdd(form: NgForm) {
     if (form.valid) {
       const characterName = form.value.characterAdd;
-      console.log(characterName);
+      this.huntedListService.addCharacterToList(characterName);
       this.errorMessage = false;
     } else {
       this.errorMessage = true;
@@ -89,7 +89,7 @@ export class EditHuntedListComponent implements OnInit {
   onListEdit(form: NgForm) {
     if(form.valid) {
       const listName = form.value.listName;
-      this.huntedListService.activeList = listName;
+      this.huntedListService.activeList.name = listName;
     }
   }
 
